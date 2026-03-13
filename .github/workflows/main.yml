@@ -14,10 +14,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
 
-      - name: Install ClawHub skill
-        run: npx clawhub@latest install verified-agent-identity
+      - name: Install ClawHub
+        run: npm install -g clawhub
+
+      - name: Install Verified Agent Identity
+        run: clawhub install verified-agent-identity
 
       - name: Install dependencies
         run: |
@@ -29,5 +32,4 @@ jobs:
 
       - name: Link Human to Agent
         run: |
-          node scripts/manualLinkHumanToAgent.js --challenge '{"name": "setyamikcala", "description": "setyamikcala AI Agent"}'
-          
+          node scripts/manualLinkHumanToAgent.js --challenge '{"name":"setyamikcala","description":"setyamikcala AI Agent"}'
